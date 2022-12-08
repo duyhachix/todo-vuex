@@ -53,7 +53,7 @@ const actions = {
 	},
 	async addTodo({ commit }, title) {
 		let response = await axios.post(
-			`https://jsonplaceholder.typicode.com/todos/`,
+			`https://jsonplaceholder.typicode.com/todos`,
 			{ title: title, completed: false }
 		);
 		commit('addTodo', response.data);
