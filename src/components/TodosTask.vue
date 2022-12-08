@@ -2,8 +2,19 @@
 	<div>
 		<div>
 			<h1>Todos Task</h1>
+			<div class="legend">
+				<span>Double click to mark as complelte</span>
+				<span> <span class="incomplete-box"></span> = Incomplete </span>
+				<span> <span class="completed-box"></span> = Completed </span>
+			</div>
 			<div class="todos">
-				<div class="item" v-for="todo in allTodos" :key="todo.key">
+				<div
+					class="item"
+					v-for="todo in allTodos"
+					:key="todo.id"
+					@dblclick="onDbClick(todo)"
+					:class="{ isCompleted: todo.completed }"
+				>
 					{{ todo.title }}
 					<b-icon
 						@click="deleteTodo(todo.id)"
@@ -21,7 +32,18 @@ import { mapActions, mapGetters } from 'vuex';
 export default {
 	name: 'TodosTask',
 	methods: {
-		...mapActions(['fetchTodos', 'deleteTodo']),
+		// actions concept
+		...mapActions(['fetchTodos', 'deleteTodo','updateTodo']),
+
+		// mutations concept
+		onDbClick(todo) {
+			let updateTodo = {
+				id: todo.id,
+				title: todo.title,
+				completed: !todo.completed,
+			};
+			this.updateTodo(updateTodo);
+		},
 	},
 	computed: {
 		...mapGetters(['allTodos']),
@@ -49,5 +71,8 @@ export default {
 }
 .b-icon:hover {
 	transform: scale(0.7);
+}
+.isCompleted {
+	background-color: rgb(143, 143, 143);
 }
 </style>
