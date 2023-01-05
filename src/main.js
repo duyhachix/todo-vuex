@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router'
+import DashboardPlugin from './plugins/dashboard-plugin'
+import router from './routes/starterRouter'
 import store from './store/index'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
@@ -12,6 +13,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
+Vue.use(DashboardPlugin)
 Vue.config.productionTip = false
 
 new Vue({
