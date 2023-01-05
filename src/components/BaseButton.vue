@@ -4,7 +4,7 @@
     :disabled="disabled || loading"
     @click="handleClick"
     class="base-button"
-    :variant="!outline ? type : `outline-${type}`"
+    variant="success"
     :size="size"
     :block="block"
     :class="[
